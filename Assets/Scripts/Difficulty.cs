@@ -4,10 +4,11 @@ using UnityEngine;
 
 public static class Difficulty
 {
-    static float timeToMaxDifficulty = 60;
+    static float _timeToMaxDifficulty = 60;
     public static float GetDifficultyPercent()
     {
-        return Mathf.Clamp01(Time.time / timeToMaxDifficulty);
+        return Mathf.Clamp01(Time.time / _timeToMaxDifficulty);
     }
-
+    
 }
+ 
