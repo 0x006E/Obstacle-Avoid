@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
-    float _halfScreenWidthInWorldUnits;
+    private static float _halfScreenWidthInWorldUnits;
+    public event System.Action OnPlayerDeath;
     private void Start()
     {
         float halfPlayerWidth = transform.localScale.x / 2f;
@@ -32,7 +33,10 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D triggerCollider)
     {
         if (triggerCollider.CompareTag("Falling Block"))
+        {
+            OnPlayerDeath?.Invoke();
             Destroy(gameObject);
+        }
     }
     
 }
